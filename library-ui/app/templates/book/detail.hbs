@@ -1,0 +1,58 @@
+<div class="slide-out-bg"></div>
+<div class="slide-out">
+    <div class="slide-out-card">
+        {{#link-to "book" class="btn-back"}}
+            <div class="sr-only">Back</div>
+        {{/link-to}}
+
+        <div class="slide-out-heading">
+            <div class="title">
+                <h3>{{model.title}}</h3>
+
+                <div class="actions">
+                    {{#if (can "edit book" model)}}
+                        {{#link-to "book.edit" model.id class="btn-pop"}}edit{{/link-to}}
+                    {{/if}}
+                    {{#if (can "delete book" model)}}
+                        <button class="btn-recessed" type="button" onclick={{action "destroy"}}>delete</button>
+                    {{/if}}
+                </div>
+            </div>
+
+            <div class="details">
+                <p>
+                    <strong>Author:</strong>
+                    {{#link-to "author.detail" model.author.id}}
+                    {{model.author.last}}, {{model.author.first}}
+                    {{/link-to}}
+                </p>
+                 <p>
+                    <strong>Duration:</strong>
+
+                    {{model.duration}}
+                </p>
+                <p>
+                    <strong>Category:</strong>
+
+                    {{model.category}}
+                </p>
+
+                 <p>
+                    <strong>Publish Date:</strong>
+
+                    {{moment-format model.publishDate "MMMM Do YYYY"}}
+                </p>
+                <p>
+                    <strong>Actors:</strong>
+
+                    {{model.isbn}}
+                </p>       
+                <p>
+                    <strong>Added By:</strong>
+                    {{model.username}}
+                </p>                        
+            </div>
+        </div>
+                {{liquid-outlet}}
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<button type="button" class="btn-trigger" onclick={{action (mut showModal) true}}>Add a New Director</button>
+
+{{#liquid-if showModal class="modal-if"}}
+    <div class="modal">
+        <form class="modal-card" onsubmit={{action "save"}}>
+            <h3 class="modal-heading">Add New Director For Book</h3>
+
+            <div class="modal-content">
+                <div class="field">
+                    <label>First Name:</label>
+                    {{input type="text" maxlength="30" placeholder="First Name" value=author.first}}
+                </div>
+                <div class="field">
+                    <label>Last Name:</label>
+                    {{input type="text" maxlength="30" placeholder="Last Name" value=author.last}}
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-clear" onclick={{action (mut showModal) false}}>Cancel</button>
+                <button type="submit" class="btn-submit">Submit</button>
+            </div>
+        </form>  
+    </div>
+{{/liquid-if}}

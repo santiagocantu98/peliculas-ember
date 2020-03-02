@@ -1,0 +1,23 @@
+<div class="panel-heading">
+    <div class="search">
+        {{input type="text" placeholder="Search by Director Name" value=search}}
+    </div>
+
+    {{#if (can "create author")}}
+        {{#link-to "author.create" class="btn-new"}}
+            <div class="sr-only">Add New Director</div>
+        {{/link-to}}
+    {{/if}}
+</div>
+
+<div class="panel-content">
+    <h3 class="panel-title">Directors</h3>
+
+    <ul class="collection">
+        {{#each model as |author|}}
+            {{author-list-item first=author.first last=author.last authorId=author.id tagName="li"}}
+        {{/each}}
+    </ul>
+</div>
+
+{{liquid-outlet class="slide-container"}}
